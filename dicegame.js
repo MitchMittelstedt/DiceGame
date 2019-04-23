@@ -1,7 +1,8 @@
 function playGame() { // master function
     // set up phase
-    let goldAmount = 50;
+    let goldAmount = rollDie(200);
     let movesLeft = 200;
+    let vitality = getVitality(goldAmount);
 
     // game play (maybe loop?)
     while(movesLeft > 0) {    // do ONE turn
@@ -14,14 +15,41 @@ function playGame() { // master function
         // alert("You now have " + goldAmount + " gold.");
         console.log("You now have " + goldAmount + " gold.");
 
+        vitality = updateVitalityCounter(vitality);
+        console.log("You now have " + vitality + " vitality.")
+
     }""
 
     // end game stuff
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 function rollDie(numberOfSides) {
     let result = Math.floor( Math.random() * numberOfSides) + 1;
     return result;
+}
+
+function getVitality(goldAmount) {
+    if(goldAmount > 150) {
+        vitality = 70;
+    }
+    else if(goldAmount > 100 && goldAmount <= 150) {
+        vitality = 85;
+    }
+    else {
+        vitality = 100;
+    }
 }
 
 function updateGoldCounter(playerGold) {
@@ -29,6 +57,19 @@ function updateGoldCounter(playerGold) {
     playerGold += goldFound;
     return playerGold;
 }
+
+function enemyDamage() {
+    let damage = rollDie(15);
+    return damage
+
+}
+
+function updateVitalityCounter(vitality) {
+    vitality -= enemyDamage()
+    return vitality
+}
+
+
 
 // function increaseTurnCounter(thanos) {
 //     thanos++;
