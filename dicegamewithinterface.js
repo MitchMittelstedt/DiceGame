@@ -27,6 +27,8 @@ function playGame() { // master function
     }
 
     // end game stuff
+
+    document.getElementById("diceGame").innerHTML = "You finished your adventure with the following stats: " + goldAmount + " gold and " + vitality + " vitality.";
 }
 
 function rollDie(numberOfSides) {
@@ -58,7 +60,6 @@ function ifEnemy() {
         return false;
     }
 }
-
 
 function enemyDamage(vitality, chanceOfEnemy) {
     if(chanceOfEnemy) {
