@@ -4,6 +4,7 @@ function playGame() { // master function
     let movesLeft = 200;
     let vitality = 0;
     vitality = getVitality(vitality,goldAmount);
+    let moveCount = 0;
 
     // game play (maybe loop?)
     while(movesLeft >= 0 && vitality >= 0 && goldAmount >=0) {    // do ONE turn
@@ -11,6 +12,8 @@ function playGame() { // master function
         movesLeft -= movesUsed;
         // alert("You have moved " + movesUsed + " spaces and have " + movesLeft + " moves left.");
         console.log("You have moved " + movesUsed + " spaces and have " + movesLeft + " moves left.");
+
+        moveCount = moveCounter(moveCount);
 
         let chanceOfEnemy = ifEnemy();
 
@@ -28,7 +31,12 @@ function playGame() { // master function
 
     // end game stuff
 
-    document.getElementById("diceGame").innerHTML = "You finished your adventure with the following stats: " + goldAmount + " gold and " + vitality + " vitality.";
+    document.getElementById("diceGame").innerHTML = "You finished your adventure with the following stats: " + "<br>" + goldAmount + " gold and " + vitality + " vitality in " + moveCount + " moves.";
+}
+
+function moveCounter(moveCount) {
+    moveCount += 1;
+    return moveCount;
 }
 
 function rollDie(numberOfSides) {
