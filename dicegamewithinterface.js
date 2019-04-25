@@ -108,7 +108,7 @@ function updateGoldCounter(goldAmount, ifLoot) {
         return goldAmount;        
     }
     else {
-        let goldLost = rollDie(12);
+        let goldLost = rollDie(15);
         goldAmount -= goldLost;
         return goldAmount;
     }
